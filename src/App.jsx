@@ -3,13 +3,19 @@ import Result from "./component/Result";
 
 const App = () => {
   const [data, setData] = useState([]);
+  const API = "/data.json";
 
   useEffect(() => {
     const fetchData = async () => {
+      console.log(API);
       try {
-        const response = await fetch("./data.json"); // Fetch the JSON file
+        console.log(`${API} inside the try block`);
+        const response = await fetch(API); // Fetch the JSON file
+        console.log(`${API} After the fetch function`);
+
         const fetchedData = await response.json(); // Parse the JSON response
         setData(fetchedData); // Update data state
+        console.log(fetchedData);
       } catch (error) {
         console.error("Error fetching data:", error); // Handle errors
       }
